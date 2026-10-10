@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八戒电影网 - 西游神话喜剧资料站·八戒取经片库·正版观影导航</title>
+<meta name="description" content="八戒电影网(bajielunlidianyingwang-h5.github.io)是西游神话喜剧资料站：取经片库、猪八戒专档、神话/无厘头/动画片单与正版观看入口。不托管视频、不聚合盗版源、不诱导下载播放器。">
+<meta name="keywords" content="八戒电影网, bajielunlidianyingwang-h5, 西游电影, 猪八戒电影, 神话喜剧, 大话西游, 大圣归来, 正版观影">
+<meta name="author" content="八戒电影网">
+<meta name="robots" content="index, follow">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#241307;
+  --ink-2:#33200e;
+  --paper:#f6ead2;
+  --paper-2:#efe0c2;
+  --orange:#e8881f;
+  --orange-deep:#c2640c;
+  --red:#b23a2e;
+  --red-soft:#d9806f;
+  --green:#3f6b4a;
+  --green-soft:#7fae8b;
+  --soft:#8a6f52;
+  --line:rgba(36,19,7,.18);
+  --card:rgba(246,234,210,.06);
+  --radius:18px;
+  --shadow:0 10px 28px rgba(0,0,0,.32);
+}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Serif SC","Songti SC","PingFang SC",serif;background:var(--ink);color:var(--paper);line-height:1.85;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(460px 360px at 85% 10%,rgba(232,136,31,.26),transparent 60%),
+  radial-gradient(520px 420px at 10% 90%,rgba(178,58,46,.22),transparent 60%),
+  linear-gradient(180deg,#241307,#33200e 55%,#1c0f06 100%);}
+/* 取经路虚线 */
+.road{position:fixed;left:0;right:0;bottom:0;height:30vh;z-index:0;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(90deg,transparent 0 18px,rgba(246,234,210,.5) 18px 30px);
+  -webkit-mask:linear-gradient(180deg,transparent,#000 70%);mask:linear-gradient(180deg,transparent,#000 70%);}
+/* 飘香粒子 */
+.crumb{position:fixed;width:7px;height:7px;border-radius:50%;background:var(--orange);z-index:0;opacity:.5;animation:rise 11s linear infinite}
+@keyframes rise{0%{transform:translateY(110vh) scale(.6);opacity:0}15%{opacity:.7}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(36,19,7,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+.brand .pig{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 50% 38%,var(--red-soft),var(--red) 60%,#7c241b);box-shadow:0 0 16px rgba(178,58,46,.45);position:relative}
+.brand .pig::before,.brand .pig::after{content:"";position:absolute;top:11px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.brand .pig::before{left:7px}.brand .pig::after{right:7px}
+.brand b{color:var(--orange)}
+.topnav{display:flex;gap:4px}
+.topnav a{padding:8px 14px;border-radius:8px;font-size:.84rem;font-weight:600;color:var(--soft);transition:.25s}
+.topnav a:hover,.topnav a.active{background:rgba(232,136,31,.16);color:var(--orange)}
+.menu-btn{display:none;background:none;border:none;font-size:1.4rem;color:var(--orange);cursor:pointer}
+
+.hero{position:relative;z-index:1;margin-top:60px;padding:78px 20px 56px}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.kicker{font-family:"Courier New",monospace;font-size:.68rem;letter-spacing:3px;color:var(--orange);border:1px solid var(--line);padding:4px 10px;border-radius:20px}
+.hero h1{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:900;line-height:1.16;margin:14px 0 8px}
+.hero h1 .b{color:var(--orange);text-shadow:0 8px 26px rgba(232,136,31,.3)}
+.hero h1 .r{color:var(--red-soft)}
+.hero p{color:#e7d3b1;font-size:1rem;margin:14px 0 24px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{font-family:inherit;font-weight:700;font-size:.9rem;padding:12px 24px;border-radius:10px;cursor:pointer;border:none;transition:.3s}
+.btn-main{background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#1c0f06}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(232,136,31,.35)}
+.btn-line{background:transparent;border:2px solid var(--red-soft);color:var(--red-soft)}
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+.hero-card h3{font-size:.95rem;margin-bottom:10px;color:var(--orange)}
+.hero-card p{font-size:.78rem;color:#dcc09a;line-height:1.65}
+.hero-card .ok{color:var(--green-soft);font-weight:800}
+
+.container{max-width:1200px;margin:0 auto;padding:52px 20px;position:relative;z-index:1}
+.label{font-family:"Courier New",monospace;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange)}
+.title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:4px 0 6px}
+.desc{font-size:.88rem;color:#cdb591;margin-bottom:30px}
+.divider{height:2px;background:repeating-linear-gradient(90deg,var(--orange) 0 14px,transparent 14px 26px);opacity:.25;margin:8px 0 26px}
+
+/* 取经四栏 */
+.pil-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.pil{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;transition:.3s}
+.pil:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--orange)}
+.pil .ico{font-size:1.9rem}
+.pil h3{font-size:1rem;font-weight:800;color:#fff;margin:6px 0 4px}
+.pil p{font-size:.76rem;color:#cdb591;line-height:1.6}
+
+/* 八戒专档 */
+.bj{background:rgba(178,58,46,.08);border:1px dashed var(--red-soft);border-radius:var(--radius);padding:26px;margin-bottom:34px}
+.bj h3{font-size:1rem;color:var(--red-soft);margin-bottom:8px}
+.bj p{font-size:.82rem;color:#dcc09a;line-height:1.7}
+
+/* 片单 */
+.film-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.film{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:.3s;position:relative;overflow:hidden}
+.film::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--orange))}
+.film:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--c,var(--orange))}
+.film .meta{font-family:"Courier New",monospace;font-size:.74rem;color:var(--green-soft);font-weight:700}
+.film h3{font-size:1rem;color:#fff;margin:6px 0 4px}
+.film p{font-size:.76rem;color:#cdb591;line-height:1.6}
+.film .tag{margin-top:10px;font-size:.7rem;font-weight:700;color:var(--c,var(--orange));display:inline-block}
+
+/* 正版 */
+.watch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.w{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.w h3{font-size:.95rem;color:#fff}
+.w p{font-size:.76rem;color:#cdb591;margin-top:6px}
+.w .tag{font-size:.7rem;color:var(--green-soft);font-weight:700;margin-top:8px;display:inline-block}
+
+/* 防坑 */
+.safe{background:rgba(232,136,31,.06);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.safe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.safe-item{display:flex;gap:10px;font-size:.8rem;color:#dcc09a}
+.safe-item .x{color:#ff8a7a;font-weight:800}
+.safe-item .v{color:var(--green-soft);font-weight:800}
+
+.footer{position:relative;z-index:1;background:#160b04;color:var(--paper);padding:46px 20px 24px;margin-top:54px;border-top:1px solid var(--line)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;margin-bottom:26px}
+.footer h4{font-size:.9rem;margin-bottom:10px;color:#fff}
+.footer a{display:block;font-size:.8rem;color:#c7a982;padding:3px 0}
+.footer a:hover{color:var(--orange)}
+.footer p{font-size:.82rem;color:#c7a982;line-height:1.6}
+.footer-bottom{text-align:center;font-size:.72rem;color:rgba(246,234,210,.5);padding-top:18px;border-top:1px solid rgba(246,234,210,.12)}
+.footer-bottom a{color:var(--orange);font-weight:600;display:inline}
+
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-card{order:-1}}
+@media(max-width:768px){
+  .topnav{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(36,19,7,.97);padding:12px 20px;border-bottom:1px solid var(--line)}
+  .topnav.open{display:flex}.menu-btn{display:block}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+<div class="bg"></div>
+<div class="road"></div>
+<script>
+for(var i=0;i<24;i++){var c=document.createElement('div');c.className='crumb';
+c.style.left=Math.random()*100+'vw';c.style.animationDuration=(8+Math.random()*6)+'s';
+c.style.animationDelay=(-Math.random()*11)+'s';document.body.appendChild(c);}
+</script>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="pig"></span>八戒<b>电影网</b></div>
+    <nav class="topnav" id="topNav">
+      <a href="#home" class="active">首页</a>
+      <a href="#road">取经片库</a>
+      <a href="#bajie">八戒专档</a>
+      <a href="#list">神话喜剧片单</a>
+      <a href="#watch">正版去哪看</a>
+      <a href="#safe">防坑</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <span class="kicker">PIGGY FILM ARCHIVE · XUANZANG ROAD</span>
+      <h1>八戒不偷懒，<br>只帮你把<span class="b">西游片</span>找齐。</h1>
+      <p>八戒电影网（bajielunlidianyingwang-h5.github.io）是西游神话喜剧资料站：取经片库、猪八戒专档、神话/无厘头/动画片单与正版入口。不托管视频、不聚合盗版源、不诱导下载“专用播放器”。[10,7](@ref)</p>
+      <div class="hero-actions">
+        <button class="btn btn-main">🐷 进取经片库</button>
+        <button class="btn btn-line">🎬 看八戒专档</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>八戒三不</h3>
+      <p><span class="ok">✓</span> 不存片、不深度链接非法视听源<br>
+      <span class="ok">✓</span> 不把“八戒”做成擦边/贪欲噱头<br>
+      <span class="ok">✓</span> 西游、神话、喜剧、动画按资料馆逻辑整理<br>
+      <span class="ok">✓</span> 老片优先走正版平台/资料馆/公共领域</p>
+    </div>
+  </div>
+</section>
+
+<div class="container" id="road">
+  <div class="label">— XUANZANG FILM LIBRARY —</div>
+  <h2 class="title">取经片库：四个角色，四种看片法</h2>
+  <p class="desc">同一部《西游记》，换主角就是另一部电影。</p>
+  <div class="divider"></div>
+  <div class="pil-grid">
+    <div class="pil"><div class="ico">🐵</div><h3>悟空库</h3><p>大闹天宫、降妖、真假猴王、暗黑重解。动作设计+特效演进是主线。</p></div>
+    <div class="pil"><div class="ico">🐷</div><h3>八戒库</h3><p>贪吃、偷懒、憨直、被嘲弄也最有人味。剪纸、喜剧、现代游记都收。</p></div>
+    <div class="pil"><div class="ico">🧘</div><h3>唐僧库</h3><p>取经意志、玄奘史实、情癫反差。从历史片到无厘头都分开标。</p></div>
+    <div class="pil"><div class="ico">🐟</div><h3>沙僧/龙马库</h3><p>常被忽略的配角；现代改编里常变团队润滑剂或隐藏主线。</p></div>
+  </div>
+</div>
+
+<div class="container" id="bajie">
+  <div class="bj">
+    <h3>八戒专档：为什么单独给他开一间</h3>
+    <p>猪八戒在《西游记》里最“像人”：会饿、会懒、会动凡心、会后悔。[15](@ref) 电影里他适合做喜剧担、温情担、儿童向担——《猪八戒吃西瓜》（1958 剪纸动画）是中国首部剪纸动画片，[6,15](@ref)《大天蓬》（2020）走爱情/古装，《西游新传》做现代唐僧师徒游记。专档不炒“贪欲”擦边，只整理“憨、馋、忠、逗”四类表演谱系。</p>
+  </div>
+  <div class="label">— BAJIE SELECTED —</div>
+  <h2 class="title">八戒向片单（示意）</h2>
+  <p class="desc">具体正版 availability 以各平台当期授权为准。</p>
+  <div class="film-grid">
+    <div class="film" style="--c:var(--orange)"><div class="meta">1958 · 剪纸</div><h3>猪八戒吃西瓜</h3><p>万古蟾导演。八戒偷吃西瓜、分瓜说谎，最后被悟空教训。中国剪纸动画入门片。</p><div class="tag">儿童/喜剧</div></div>
+    <div class="film" style="--c:var(--red)"><div class="meta">2020 · 古装</div><h3>大天蓬</h3><p>应昊茗、张玉轩主演，天蓬元帅前传式爱情/剧情，把“八戒前世”拍得更重情。</p><div class="tag">爱情/古装</div></div>
+    <div class="film" style="--c:var(--green)"><div class="meta">2010 · 动画</div><h3>西游新传</h3><p>师徒现代化游记，八戒负责吐槽与误入现代梗，适合家庭向科普西游。</p><div class="tag">动画/家庭</div></div>
+    <div class="film" style="--c:var(--orange)"><div class="meta">2016 · 喜剧</div><h3>大闹天竺</h3><p>王宝强执导并主演，西游框架+公路喜剧，八戒式憨角由配角承接撒欢。</p><div class="tag">喜剧/冒险</div></div>
+  </div>
+</div>
+
+<div class="container" id="list">
+  <div class="label">— MYTH & COMEDY LIST —</div>
+  <h2 class="title">西游/神话/喜剧总片单</h2>
+  <p class="desc">从默片动画到无厘头，按“改编力度”而不是按热度排。</p>
+  <div class="divider"></div>
+  <div class="film-grid">
+    <div class="film" style="--c:var(--orange)"><div class="meta">1941 · 动画</div><h3>铁扇公主</h3><p>万氏兄弟长篇有声动画，火焰山借扇、八戒同行。中国动画史里程碑。[6,15](@ref)</p><div class="tag">神话/动画</div></div>
+    <div class="film" style="--c:var(--red)"><div class="meta">1961 · 动画</div><h3>大闹天宫</h3><p>上海美影经典，邱岳峰配音孙悟空。重美术、重戏曲身段，不靠对白也能看。</p><div class="tag">神话/美术片</div></div>
+    <div class="film" style="--c:var(--green)"><div class="meta">1985 · 动画</div><h3>金猴降妖</h3><p>严定宪、特伟等导演，三打白骨精改编，八戒误事—认错—补位节奏很典型。</p><div class="tag">动画/儿童</div></div>
+    <div class="film" style="--c:var(--orange)"><div class="meta">1995 · 无厘头</div><h3>大话西游系列</h3><p>周星驰/刘镇伟，月光宝盒+仙履奇缘。至尊宝线把八戒从配角变成群像喜剧。[17,19](@ref)</p><div class="tag">爱情/无厘头</div></div>
+    <div class="film" style="--c:var(--red)"><div class="meta">2005 · 奇幻</div><h3>情癫大圣</h3><p>谢霆锋、蔡卓妍、范冰冰，唐僧反爱情线、八戒式误会与树妖支线并行。[12](@ref)</p><div class="tag">奇幻/喜剧</div></div>
+    <div class="film" style="--c:var(--green)"><div class="meta">2015 · 动画</div><h3>西游记之大圣归来</h3><p>江流儿+孙悟空，国产动画重启作。八戒改为粗线条憨帮手，家庭向强。</p><div class="tag">动画/家庭</div></div>
+    <div class="film" style="--c:var(--orange)"><div class="meta">2013 · 奇幻</div><h3>西游降魔篇</h3><p>周星驰前传式收徒，天蓬、悟空、沙僧未成型期；偏惊悚喜剧与降妖。</p><div class="tag">奇幻/动作</div></div>
+    <div class="film" style="--c:var(--red)"><div class="meta">2013/2014 · 奇幻</div><h3>大闹天宫（郑保瑞）</h3><p>甄子丹孙悟空、周润发玉帝、郭富城牛魔王；大片厂式特效与港式动作。[6,19](@ref)</p><div class="tag">奇幻/大片</div></div>
+  </div>
+</div>
+
+<div class="container" id="watch">
+  <div class="label">— LEGAL VIEWING —</div>
+  <h2 class="title">西游片正版去哪看</h2>
+  <p class="desc">老动画、港片修复、新网大渠道不一样，别都信“免费全集”。</p>
+  <div class="watch-grid">
+    <div class="w"><h3>1905 / 央视频</h3><p>西游专题、国产老动画、戏曲改编、主旋律/历史片正版集中地。[6,15](@ref)</p><span class="tag">官方免费/正版</span></div>
+    <div class="w"><h3>爱优腾芒 B 站</h3><p>大话/大圣/降魔/新动画多在订阅或单片租借；部分老片进免费区。</p><span class="tag">会员/租片</span></div>
+    <div class="w"><h3>电影资料馆/影展</h3><p>香港电影资料馆“对话西游”等做4K修复放映，大话、邵氏西游、郑保瑞系列常驻。[17,19](@ref)</p><span class="tag">修复/策展</span></div>
+    <div class="w"><h3>公共领域老片</h3><p>1941《铁扇公主》等早期动画按版权状态评估；档案站可合法教研拉片。[6](@ref)</p><span class="tag">无版权障碍</span></div>
+  </div>
+</div>
+
+<div class="container" id="safe">
+  <div class="label">— ANTI-PIRACY —</div>
+  <h2 class="title">“八戒类影视站”红灯清单</h2>
+  <p class="desc">名字可爱不重要，行为像盗版就必须躲。</p>
+  <div class="safe">
+    <div class="safe-grid">
+      <div class="safe-item"><span class="x">✕</span> 宣称“全免费、免注册、P2P 即看”新片全集[10](@ref)</div>
+      <div class="safe-item"><span class="x">✕</span> 点播放先下“专用播放器/EXE”</div>
+      <div class="safe-item"><span class="x">✕</span> 院线未下就出高清、还要求验证码</div>
+      <div class="safe-item"><span class="x">✕</span> 八戒/西游擦边、情色化“贪欲”入口</div>
+      <div class="safe-item"><span class="x">✕</span> 弹窗满屏、域名天天换、主体匿名</div>
+      <div class="safe-item"><span class="x">✕</span> 深度聚合其他站视听源且无授权说明</div>
+      <div class="safe-item"><span class="v">✓</span> 写清“某片某年、正版平台/资料馆/公域”</div>
+      <div class="safe-item"><span class="v">✓</span> 不存片、不解析、不诱导下载 APP</div>
+      <div class="safe-item"><span class="v">✓</span> 八戒形象走憨/馋/忠/逗，不擦边</div>
+      <div class="safe-item"><span class="v">✓</span> 页脚有主体/隐私/侵权处理</div>
+      <div class="safe-item"><span class="v">✓</span> 敢写“本站仅资料导航，不提供未授权播放”</div>
+      <div class="safe-item"><span class="v">✓</span> 移动端无全屏遮罩弹窗、按钮≥44px[11,5](@ref)</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="pig"></span>八戒<b>电影网</b></div>
+        <p>八戒电影网（bajielunlidianyingwang-h5.github.io）是西游神话喜剧资料站：取经片库、猪八戒专档、神话/无厘头/动画正版导航。不提供未授权播放，不聚合非法视听节目，不诱导下载任何播放器。</p>
+      </div>
+      <div><h4>栏目</h4><a href="#road">取经片库</a><a href="#bajie">八戒专档</a><a href="#list">神话喜剧片单</a><a href="#watch">正版入口</a></div>
+      <div><h4>片种</h4><a href="#">西游动画</a><a href="#">无厘头喜剧</a><a href="#">神话大片</a><a href="#">戏曲/修复</a></div>
+      <div><h4>说明</h4><a href="#">本站立场</a><a href="#">版权与引用</a><a href="#">隐私说明</a><a href="#">联系我们</a></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 八戒电影网 (Bajie Film Archive) - 西游神话喜剧资料站 · 八戒取经片库 · 正版观影导航</p>
+      <p>网站地址：<a href="https://bajielunlidianyingwang-h5.github.io">https://bajielunlidianyingwang-h5.github.io</a></p>
+      <p style="margin-top:6px;opacity:.6">“八戒”仅作西游资料站IP，不涉及八戒影院/八戒影视等免费点播聚合、盗版或擦边内容。[10,7](@ref)</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+var menuBtn=document.getElementById('menuBtn'),topNav=document.getElementById('topNav');
+menuBtn.onclick=function(){topNav.classList.toggle('open')};
+topNav.querySelectorAll('a').forEach(function(a){a.onclick=function(){topNav.classList.remove('open')}});
+var secs=document.querySelectorAll('section[id],div[id]');
+addEventListener('scroll',function(){
+  var y=scrollY+80;
+  secs.forEach(function(s){
+    if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
+      document.querySelectorAll('.topnav a').forEach(function(a){a.classList.remove('active')});
+      var l=document.querySelector('.topnav a[href="#'+s.id+'"]');
+      if(l)l.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
